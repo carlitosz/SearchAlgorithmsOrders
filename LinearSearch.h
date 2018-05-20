@@ -5,10 +5,20 @@
 #include <string>
 using namespace std;
 
+// ============================================================================
+// User defined classes.
+// ============================================================================
 #include "GenerateData.h"
 
+
+// ============================================================================
+// Executes linear searches for arrays of size N.
+// ============================================================================
 class LinearSearch : public GenerateData {
     public:
+        // ====================================================================
+        // Executes the linear search algorithm.
+        // ====================================================================
         void executeSearch(string str) {
             for (int i = 0; i < size; ++i) {
                 if (searchArray[i] == str) {
@@ -17,6 +27,9 @@ class LinearSearch : public GenerateData {
             }
         }
 
+        // ====================================================================
+        // Gets test data from the GenerateData class.
+        // ====================================================================
         string *getTestData() {
             cout << "Generating test data..." << endl;
             string* testData = generateTestData(searchArray, size);
@@ -25,7 +38,10 @@ class LinearSearch : public GenerateData {
             return testData;
         }
 
-        // Overloaded Constructor.
+        // ====================================================================
+        // Constructs new objects of LinearSearch by populating them with
+        // random strings.
+        // ====================================================================
         LinearSearch(int arraySize) {
             size = arraySize;
             cout << "Populating array with random strings..." << endl;
@@ -33,7 +49,9 @@ class LinearSearch : public GenerateData {
             cout << "Finished populating array..." << endl;
         }
 
+        // ====================================================================
         // Destructor.
+        // ====================================================================
         ~LinearSearch() { delete [] searchArray; }
     private:
         int size;

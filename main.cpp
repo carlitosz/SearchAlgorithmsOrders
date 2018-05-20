@@ -3,10 +3,14 @@
 #include <chrono>
 using namespace std;
 
+// ============================================================================
 // User defined libraries
+// ============================================================================
 #include "LinearSearch.h"
 
-// User defined constants used to test different N
+// ============================================================================
+// User defined constants used to test different N.
+// ============================================================================
 const int MAX_SIZE210 = 1024; // 2^10
 const int MAX_SIZE213 = 8192; // 2^13
 const int MAX_SIZE214 = 16384; // 2^14
@@ -16,26 +20,29 @@ const int MAX_SIZE217 = 131072; // 2^17
 const int MAX_SIZE218 = 262144; // 2^18
 const int MAX_SIZE219 = 524288; // 2^19
 
-// Function prototypes
+// ============================================================================
+// Function prototypes.
+// ============================================================================
 void printLinear(string*, int);
 void printResults(int);
 
-// Execution
+// ============================================================================
+// Main.
+// ============================================================================
 int main(void) {
     srand(static_cast<unsigned int>(time(0)));
 
-    // Define array size.
-    int arraySize = MAX_SIZE219;
+    // ========================================================================
+    // Change the MAX_SIZE variable to test different N.
+    // ========================================================================
+    int arraySize = MAX_SIZE210;
 
     // ==== Linear Search =====================================================
-    // Create linear search object of arraySize;
     LinearSearch linear(arraySize);
+
     cout << "Array of size " << arraySize << " has been created." << endl;
 
-    // Generate the test data set.
     string *testData = linear.getTestData();
-
-    // Start the clock.
     auto started = std::chrono::high_resolution_clock::now();
 
     // Test linear search.
@@ -44,11 +51,11 @@ int main(void) {
         linear.executeSearch(testData[i]);
     }
 
-    // Stop the clock.
     auto done = std::chrono::high_resolution_clock::now();
-    int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count();
+    int milliseconds = 
+        std::chrono::duration_cast<std::chrono::milliseconds>
+        (done - started).count();
 
-    // Print elapsed time for Linear Search.
     printResults(milliseconds);
     // ==== End of Linear Search ==============================================
 
@@ -59,6 +66,9 @@ int main(void) {
     return 0;
 }
 
+// ============================================================================
+// Prints the results to stdout.
+// ============================================================================
 void printResults(int milliseconds) {
     int seconds = (int) (milliseconds / 1000) % 60 ;
     int minutes = (int) ((milliseconds / (1000*60)) % 60);
@@ -72,8 +82,10 @@ void printResults(int milliseconds) {
          << endl;
 }
 
-// For debug purposes.
-void printLinear(string *arr, int size) {
+// ============================================================================
+// Debug purposes.
+// ============================================================================
+void print(string *arr, int size) {
     for (int i = 0; i < size; ++i) {
         cout << "[" << i << "] " << arr[i] << endl;                
     }

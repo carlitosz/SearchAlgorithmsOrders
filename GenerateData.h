@@ -5,11 +5,21 @@
 #include <string>
 using namespace std;
 
+// ============================================================================
+// User defined constants.
+// ============================================================================
 const int STRING_SIZE = 20;
 const string CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{}|";
 
+
+// ==== Generate data ==========================================================
+// Generates data and test data for the linear, binary, and hash searches.
+// =============================================================================
 class GenerateData {
     public:
+        // ====================================================================
+        // Generates an array of random strings of size sizeofArray
+        // ====================================================================
         string *generateStrings(int sizeOfArray) {
             string str = "";
             string *randomStrings = new string[sizeOfArray];
@@ -25,6 +35,12 @@ class GenerateData {
             return randomStrings;
         }
 
+        // ====================================================================
+        // Generates test data of size sampleSize.
+        // Half of the strings from sample are joined with
+        // random strings so that the test data contains 1/2
+        // data from the original sample and 1/2 random data.
+        // ====================================================================
         string *generateTestData(string *sample, int sampleSize) {
             string *testData = new string[sampleSize];
 
@@ -36,6 +52,9 @@ class GenerateData {
         }
 
     private:
+        // ====================================================================
+        // Generates a single random string.
+        // ====================================================================
         string generateString() {
             string randomStr = "";
 
