@@ -1,2 +1,2 @@
 # SearchAlgorithmsOrders
-Determine the orders (Big O) of search algorithms: Linear, Binary, Hash.
+Use Linear, Binary, and Hash (chaining) search algorithms to determine the runtime of each search algorithm with various N.
