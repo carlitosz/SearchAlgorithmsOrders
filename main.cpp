@@ -7,6 +7,7 @@ using namespace std;
 // User defined libraries
 // ============================================================================
 #include "LinearSearch.h"
+#include "BinarySearch.h"
 
 // ============================================================================
 // User defined constants used to test different N.
@@ -23,7 +24,7 @@ const int MAX_SIZE219 = 524288; // 2^19
 // ============================================================================
 // Function prototypes.
 // ============================================================================
-void printLinear(string*, int);
+void print(string*, int);
 void printResults(int);
 
 // ============================================================================
@@ -39,14 +40,13 @@ int main(void) {
 
     // ==== Linear Search =====================================================
     LinearSearch linear(arraySize);
-
-    cout << "Array of size " << arraySize << " has been created." << endl;
+    printArraySize(arraySize);
 
     string *testData = linear.getTestData();
     auto started = std::chrono::high_resolution_clock::now();
 
     // Test linear search.
-    cout << endl << endl << "Executing linear search ... " << endl << endl;
+    printSearchType('linear');
     for (int i = 0; i < arraySize; ++i) {
         linear.executeSearch(testData[i]);
     }
@@ -60,10 +60,43 @@ int main(void) {
     // ==== End of Linear Search ==============================================
 
 
+
     // ==== Binary Search =====================================================
+    BinarySearch binary(arraySize);
+    printArraySize(arraySize);
+
+    string *testData = binary.getTestData();
+    auto started = std::chrono::high_resolution_clock::now();
+
+    // Test binary search.
+    printSearchType('binary');
+    
+
+    auto done = std::chrono::high_resolution_clock::now();
+    int milliseconds = 
+        std::chrono::duration_cast<std::chrono::milliseconds>
+        (done - started).count();
+
+    printResults(milliseconds);
     // ==== End of Binary Search ==============================================
     
     return 0;
+}
+
+// ============================================================================
+// Prints the search type.
+// ============================================================================
+void printSearchType(string type) {
+    cout << endl << endl
+         << "Executing " << type << " search ... "
+         << endl << endl;
+}
+
+// ============================================================================
+// Prints the array size.
+// ============================================================================
+void printArraySize(int size) {
+    cout << "Array of size " << size << " has been created." << endl;
 }
 
 // ============================================================================
