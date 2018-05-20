@@ -2,14 +2,16 @@
 #define GENERATE_DATA_H
 
 #include <iostream>
+#include <algorithm>
 #include <string>
+#include <vector>
 using namespace std;
 
 // ============================================================================
 // User defined constants.
 // ============================================================================
 const int STRING_SIZE = 20;
-const string CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+{}|";
+const string CHARS = "abcdefghijklmnopqrstuvwxyz";
 
 
 // ==== Generate data ==========================================================
@@ -31,6 +33,26 @@ class GenerateData {
                 randomStrings[i] = str;
                 str = "";
             }
+
+            return randomStrings;
+        }
+
+        // ====================================================================
+        // Generates vector of random strings of size sizeArray
+        // ====================================================================
+        vector<string> generateStringsAsVector(int sizeOfArray) {
+            string str = "";
+            vector<string> randomStrings(sizeOfArray);
+
+            for (int i = 0; i < sizeOfArray; ++i) {
+                for (int j = 0; j < STRING_SIZE; ++j) {
+                    str += CHARS[rand() % CHARS.size()];
+                }
+                randomStrings.at(i) = str;
+                str = "";
+            }
+
+            sort(randomStrings.begin(), randomStrings.begin() + 20);
 
             return randomStrings;
         }

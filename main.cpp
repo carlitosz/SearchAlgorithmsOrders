@@ -24,8 +24,10 @@ const int MAX_SIZE219 = 524288; // 2^19
 // ============================================================================
 // Function prototypes.
 // ============================================================================
-void print(string*, int);
+void printObj(string*, int);
 void printResults(int);
+void printArraySize(int);
+void printSearchType(string);
 
 // ============================================================================
 // Main.
@@ -39,24 +41,24 @@ int main(void) {
     int arraySize = MAX_SIZE210;
 
     // ==== Linear Search =====================================================
-    LinearSearch linear(arraySize);
-    printArraySize(arraySize);
+    // LinearSearch linear(arraySize);
+    // printArraySize(arraySize);
 
-    string *testData = linear.getTestData();
-    auto started = std::chrono::high_resolution_clock::now();
+    // string *testData = linear.getTestData();
+    // auto started = std::chrono::high_resolution_clock::now();
 
-    // Test linear search.
-    printSearchType('linear');
-    for (int i = 0; i < arraySize; ++i) {
-        linear.executeSearch(testData[i]);
-    }
+    // // Test linear search.
+    // printSearchType("linear");
+    // for (int i = 0; i < arraySize; ++i) {
+    //     linear.executeSearch(testData[i]);
+    // }
 
-    auto done = std::chrono::high_resolution_clock::now();
-    int milliseconds = 
-        std::chrono::duration_cast<std::chrono::milliseconds>
-        (done - started).count();
+    // auto done = std::chrono::high_resolution_clock::now();
+    // int milliseconds = 
+    //     std::chrono::duration_cast<std::chrono::milliseconds>
+    //     (done - started).count();
 
-    printResults(milliseconds);
+    // printResults(milliseconds);
     // ==== End of Linear Search ==============================================
 
 
@@ -65,19 +67,18 @@ int main(void) {
     BinarySearch binary(arraySize);
     printArraySize(arraySize);
 
-    string *testData = binary.getTestData();
-    auto started = std::chrono::high_resolution_clock::now();
+    // string *testData = binary.getTestData();
+    // auto started = std::chrono::high_resolution_clock::now();
 
-    // Test binary search.
-    printSearchType('binary');
-    
+    // // Test binary search.
+    // printSearchType('binary');
 
-    auto done = std::chrono::high_resolution_clock::now();
-    int milliseconds = 
-        std::chrono::duration_cast<std::chrono::milliseconds>
-        (done - started).count();
+    // auto done = std::chrono::high_resolution_clock::now();
+    // int milliseconds = 
+    //     std::chrono::duration_cast<std::chrono::milliseconds>
+    //     (done - started).count();
 
-    printResults(milliseconds);
+    // printResults(milliseconds);
     // ==== End of Binary Search ==============================================
     
     return 0;
@@ -118,7 +119,7 @@ void printResults(int milliseconds) {
 // ============================================================================
 // Debug purposes.
 // ============================================================================
-void print(string *arr, int size) {
+void printObj(string *arr, int size) {
     for (int i = 0; i < size; ++i) {
         cout << "[" << i << "] " << arr[i] << endl;                
     }

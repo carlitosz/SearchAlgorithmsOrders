@@ -7,8 +7,7 @@ using namespace std;
 // ============================================================================
 // User defined classes.
 // ============================================================================
-include "GenerateData.h"
-
+#include "GenerateData.h"
 
 // ============================================================================
 // Executes binary search on an array of random strings of size N.
@@ -25,11 +24,13 @@ class BinarySearch : public GenerateData {
         // ====================================================================
         // Gets test data from the GenerateData class.
         // ====================================================================
-        string *getTestData() {
-            cout << "Generating test data..." << endl;
-            string *testData = generateTestData(searchArray, size);
-            cout << "Finished generating test data..." << endl;
-        }
+        // string *getTestData() {
+        //     cout << "Generating test data..." << endl;
+        //     string *testData = generateTestData(searchArray, size);
+        //     cout << "Finished generating test data..." << endl;
+
+        //     return testData;
+        // }
 
         // ====================================================================
         // Constructs new objects of type BinarySearch by populating them with
@@ -38,17 +39,17 @@ class BinarySearch : public GenerateData {
         BinarySearch(int arraySize) {
             size = arraySize;
             cout << "Populating array with random strings..." << endl;
-            searchArray = generateStrings(arraySize);
-            cout << "Finished populating array..." << endl;
+            searchArray = generateStringsAsVector(arraySize);
+            cout << "Finished populating array..." << endl << endl;
         }
 
         // ====================================================================
         // Destructor.
         // ====================================================================
-        BinarySearch() { delete [] searchArray; }
+        BinarySearch() { }
     private:
         int size;
-        string *searchArray;
+        vector<string> searchArray;
 };
 
 #endif /* BINARY_SEARCH_H */
