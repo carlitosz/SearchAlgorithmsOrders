@@ -3,10 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <random>
-#include <algorithm>
-#include <iterator>
-#include <iostream>
 using namespace std;
 
 #include "GenerateData.h"
@@ -28,15 +24,6 @@ class LinearSearch : public GenerateData {
 
             return testData;
         }
-
-        void printFirst(int num) {
-            for (int i = 0; i < num; ++i) {
-                cout << "[" << i << "] " << searchArray[i] << endl;                
-            }
-        }
-
-        // Constructor.
-        LinearSearch() {};
 
         // Overloaded Constructor.
         LinearSearch(int arraySize) {
