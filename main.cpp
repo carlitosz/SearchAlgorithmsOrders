@@ -52,27 +52,27 @@ int main(void) {
     // ========================================================================
     // Change the MAX_SIZE variable to test different N.
     // ========================================================================
-    int arraySize = MAX_SIZE220;
+    int arraySize = MAX_SIZE210;
 
     // ==== Linear Search =====================================================
-    // LinearSearch linear(arraySize);
-    // printArraySize(arraySize);
+    LinearSearch linear(arraySize);
+    printArraySize(arraySize);
 
-    // string *testData = linear.getTestData();
-    // auto started = std::chrono::high_resolution_clock::now();
+    string *testData = linear.getTestData();
+    auto started = std::chrono::high_resolution_clock::now();
 
-    // // Test linear search.
-    // printSearchType("linear");
-    // for (int i = 0; i < arraySize; ++i) {
-    //     linear.executeSearch(testData[i]);
-    // }
+    // Test linear search.
+    printSearchType("linear");
+    for (int i = 0; i < arraySize; ++i) {
+        linear.executeSearch(testData[i]);
+    }
 
-    // auto done = std::chrono::high_resolution_clock::now();
-    // int milliseconds = 
-    //     std::chrono::duration_cast<std::chrono::milliseconds>
-    //     (done - started).count();
+    auto done = std::chrono::high_resolution_clock::now();
+    int milliseconds = 
+        std::chrono::duration_cast<std::chrono::milliseconds>
+        (done - started).count();
 
-    // printResults(milliseconds);
+    printResults(milliseconds);
     // ==== End of Linear Search ==============================================
 
 
@@ -105,27 +105,27 @@ int main(void) {
     
 
     // ==== Hash Search =======================================================
-    printArraySize(arraySize);
-    HashSearch hash(arraySize);
+    // printArraySize(arraySize);
+    // HashSearch hash(arraySize);
 
-    vector<string> testData = hash.getTestData();
-    cout << "Generated test data set of "
-         << testData.size() << " elements." << endl;
+    // vector<string> testData = hash.getTestData();
+    // cout << "Generated test data set of "
+    //      << testData.size() << " elements." << endl;
 
-    auto started = std::chrono::high_resolution_clock::now();
-    printSearchType("hash");
+    // auto started = std::chrono::high_resolution_clock::now();
+    // printSearchType("hash");
 
-    // Test hash search.
-    for (int i = 0; i < arraySize; ++i) {
-        hash.executeSearch(testData[i]);
-    }
+    // // Test hash search.
+    // for (int i = 0; i < testData.size(); ++i) {
+    //     hash.executeSearch(testData[i]);
+    // }
 
-    auto done = std::chrono::high_resolution_clock::now();
-    int milliseconds =
-        std::chrono::duration_cast<std::chrono::milliseconds>
-        (done - started).count();
+    // auto done = std::chrono::high_resolution_clock::now();
+    // int milliseconds =
+    //     std::chrono::duration_cast<std::chrono::milliseconds>
+    //     (done - started).count();
 
-    printResults(milliseconds);
+    // printResults(milliseconds);
     // ==== End of Hash Search ================================================
     
     return 0;
