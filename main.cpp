@@ -24,7 +24,7 @@ const int MAX_SIZE217 = 131072; // 2^17
 const int MAX_SIZE218 = 262144; // 2^18
 const int MAX_SIZE219 = 524288; // 2^19
 
-// These sizes are more appropriate for Binary search
+// These sizes are more appropriate for Binary search and Hash search
 const int MAX_SIZE220 = 1048576; // 2^20
 const int MAX_SIZE221 = 2097152; // 2^21
 const int MAX_SIZE222 = 4194304; // 2^22
