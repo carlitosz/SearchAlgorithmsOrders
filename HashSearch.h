@@ -83,7 +83,6 @@ class HashSearch : public GenerateData {
             searchTable[index].push_back(val);
         }
 
-
         // ====================================================================
         // Generates the hash.
         // ====================================================================
