@@ -7,6 +7,7 @@ using namespace std;
 // ============================================================================
 // User defined libraries
 // ============================================================================
+#include "HashSearch.h"
 #include "LinearSearch.h"
 #include "BinarySearch.h"
 
@@ -51,7 +52,7 @@ int main(void) {
     // ========================================================================
     // Change the MAX_SIZE variable to test different N.
     // ========================================================================
-    int arraySize = MAX_SIZE227;
+    int arraySize = MAX_SIZE220;
 
     // ==== Linear Search =====================================================
     // LinearSearch linear(arraySize);
@@ -77,29 +78,55 @@ int main(void) {
 
 
     // ==== Binary Search =====================================================
-    printArraySize(arraySize);
-    BinarySearch binary(arraySize);
+    // printArraySize(arraySize);
+    // BinarySearch binary(arraySize);
 
-    vector<string> testData = binary.getTestData();
+    // vector<string> testData = binary.getTestData();
+    // cout << "Generated test data set of "
+    //      << testData.size() << " elements." << endl;
+
+    // auto started = std::chrono::high_resolution_clock::now();
+
+    // // Test binary search.
+    // printSearchType("binary");
+
+    // for (int i = 0; i < arraySize; ++i) {
+    //     int ignore = binary.executeSearch(0, arraySize - 1, testData[i]);
+    // }
+
+    // auto done = std::chrono::high_resolution_clock::now();
+    // int milliseconds = 
+    //     std::chrono::duration_cast<std::chrono::milliseconds>
+    //     (done - started).count();
+
+    // printResults(milliseconds);
+    // ==== End of Binary Search ==============================================
+
+    
+
+    // ==== Hash Search =======================================================
+    printArraySize(arraySize);
+    HashSearch hash(arraySize);
+
+    vector<string> testData = hash.getTestData();
     cout << "Generated test data set of "
          << testData.size() << " elements." << endl;
 
     auto started = std::chrono::high_resolution_clock::now();
+    printSearchType("hash");
 
-    // Test binary search.
-    printSearchType("binary");
-
+    // Test hash search.
     for (int i = 0; i < arraySize; ++i) {
-        int ignore = binary.executeSearch(0, arraySize - 1, testData[i]);
+        hash.executeSearch(testData[i]);
     }
 
     auto done = std::chrono::high_resolution_clock::now();
-    int milliseconds = 
+    int milliseconds =
         std::chrono::duration_cast<std::chrono::milliseconds>
         (done - started).count();
 
     printResults(milliseconds);
-    // ==== End of Binary Search ==============================================
+    // ==== End of Hash Search ================================================
     
     return 0;
 }
