@@ -25,7 +25,7 @@ class HashSearch : public GenerateData {
         HashSearch(int listSize) {
             sizeOfList = listSize;
 
-            cout << "Generating table of size " << listSize << endl;
+            cout << "Generating hash table of size " << listSize << endl;
             vector<vector<string> > table(listSize);
             for (int i = 0; i < listSize; ++i) {
                 vector<string> newCol;
@@ -40,12 +40,12 @@ class HashSearch : public GenerateData {
 
             randomStrings = randoms;
 
-            cout << "Populating the table with random strings" << endl;
+            cout << "Populating the hash table with random strings..." << endl;
             for (int i = 0; i < listSize; ++i) {
                 int hash = generateHash(listSize, randoms[i]);
                 insert(hash, randoms[i]);
             }
-            cout << "The vector is ready for searching..." << endl;
+            cout << "The hash table is ready for searching..." << endl;
         }
 
         // ====================================================================
