@@ -38,7 +38,8 @@ class GenerateData {
         }
 
         // ====================================================================
-        // Generates vector of random strings of size sizeArray
+        // Generates vector of random strings of size sizeArray and sorts the
+        // data. This is used for binary search.
         // ====================================================================
         vector<string> generateStringsAsVector(int sizeOfArray) {
             string str = "";
@@ -65,6 +66,19 @@ class GenerateData {
         // ====================================================================
         string *generateTestData(string *sample, int sampleSize) {
             string *testData = new string[sampleSize];
+
+            for (int i = 0; i < sampleSize; ++i) {
+                testData[i] = (i % 2 == 0) ? generateString() : sample[i];
+            }
+
+            return testData;
+        }
+
+        // ====================================================================
+        // Generates test data as Vector.
+        // ====================================================================
+        vector<string> generateTestDataAsVector(vector<string> sample, int sampleSize) {
+            vector<string> testData(sampleSize);
 
             for (int i = 0; i < sampleSize; ++i) {
                 testData[i] = (i % 2 == 0) ? generateString() : sample[i];

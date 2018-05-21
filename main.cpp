@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <vector>
 using namespace std;
 
 // ============================================================================
@@ -12,6 +13,7 @@ using namespace std;
 // ============================================================================
 // User defined constants used to test different N.
 // ============================================================================
+// These sizes are more appropriate for Linear search
 const int MAX_SIZE210 = 1024; // 2^10
 const int MAX_SIZE213 = 8192; // 2^13
 const int MAX_SIZE214 = 16384; // 2^14
@@ -21,10 +23,21 @@ const int MAX_SIZE217 = 131072; // 2^17
 const int MAX_SIZE218 = 262144; // 2^18
 const int MAX_SIZE219 = 524288; // 2^19
 
+// These sizes are more appropriate for Binary search
+const int MAX_SIZE220 = 1048576; // 2^20
+const int MAX_SIZE221 = 2097152; // 2^21
+const int MAX_SIZE222 = 4194304; // 2^22
+const int MAX_SIZE223 = 8388608; // 2^23
+const int MAX_SIZE224 = 16777216; // 2^24
+const int MAX_SIZE225 = 33554432; // 2^25
+const int MAX_SIZE226 = 67108864; // 2^26
+const int MAX_SIZE227 = 134217728; // 2^27
+
 // ============================================================================
 // Function prototypes.
 // ============================================================================
 void printObj(string*, int);
+void printVec(vector<string>, int);
 void printResults(int);
 void printArraySize(int);
 void printSearchType(string);
@@ -38,7 +51,7 @@ int main(void) {
     // ========================================================================
     // Change the MAX_SIZE variable to test different N.
     // ========================================================================
-    int arraySize = MAX_SIZE210;
+    int arraySize = MAX_SIZE227;
 
     // ==== Linear Search =====================================================
     // LinearSearch linear(arraySize);
@@ -64,21 +77,28 @@ int main(void) {
 
 
     // ==== Binary Search =====================================================
-    BinarySearch binary(arraySize);
     printArraySize(arraySize);
+    BinarySearch binary(arraySize);
 
-    // string *testData = binary.getTestData();
-    // auto started = std::chrono::high_resolution_clock::now();
+    vector<string> testData = binary.getTestData();
+    cout << "Generated test data set of "
+         << testData.size() << " elements." << endl;
 
-    // // Test binary search.
-    // printSearchType('binary');
+    auto started = std::chrono::high_resolution_clock::now();
 
-    // auto done = std::chrono::high_resolution_clock::now();
-    // int milliseconds = 
-    //     std::chrono::duration_cast<std::chrono::milliseconds>
-    //     (done - started).count();
+    // Test binary search.
+    printSearchType("binary");
 
-    // printResults(milliseconds);
+    for (int i = 0; i < arraySize; ++i) {
+        int ignore = binary.executeSearch(0, arraySize - 1, testData[i]);
+    }
+
+    auto done = std::chrono::high_resolution_clock::now();
+    int milliseconds = 
+        std::chrono::duration_cast<std::chrono::milliseconds>
+        (done - started).count();
+
+    printResults(milliseconds);
     // ==== End of Binary Search ==============================================
     
     return 0;
@@ -97,7 +117,7 @@ void printSearchType(string type) {
 // Prints the array size.
 // ============================================================================
 void printArraySize(int size) {
-    cout << "Array of size " << size << " has been created." << endl;
+    cout << "Creating array of size " << size << "." << endl;
 }
 
 // ============================================================================
@@ -119,6 +139,12 @@ void printResults(int milliseconds) {
 // ============================================================================
 // Debug purposes.
 // ============================================================================
+void printVec(vector<string> vec, int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << "[" << i << "] " << vec[i] << endl;
+    }
+}
+
 void printObj(string *arr, int size) {
     for (int i = 0; i < size; ++i) {
         cout << "[" << i << "] " << arr[i] << endl;                
